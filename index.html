@@ -81,6 +81,7 @@
             display: flex;
             list-style: none;
             gap: 25px;
+            align-items: center;
         }
 
         nav a {
@@ -90,6 +91,7 @@
             transition: color 0.3s;
             padding: 8px 12px; /* Better touch targets */
             border-radius: 4px;
+            white-space: nowrap;
         }
 
         nav a:hover {
@@ -637,6 +639,8 @@
         @media (max-width: 768px) {
             .header-content {
                 padding: 10px 0;
+                flex-wrap: wrap;
+                gap: 15px;
             }
 
             .logo {
@@ -645,6 +649,17 @@
 
             .logo h1 {
                 font-size: 1.5rem;
+            }
+
+            nav ul {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                padding: 8px 10px;
+                font-size: 0.9rem;
             }
 
             .hero {
@@ -749,6 +764,15 @@
                 font-size: 1.3rem;
             }
 
+            nav ul {
+                gap: 10px;
+            }
+
+            nav a {
+                padding: 6px 8px;
+                font-size: 0.85rem;
+            }
+
             .hero h2 {
                 font-size: 1.7rem;
             }
@@ -838,6 +862,11 @@
             
             .logo h1 {
                 font-size: 1.1rem;
+            }
+            
+            nav a {
+                font-size: 0.8rem;
+                padding: 5px 7px;
             }
             
             .hero h2 {
@@ -1104,72 +1133,6 @@
             margin-bottom: 15px;
             color: var(--secondary);
         }
-        
-        /* Mobile Menu Toggle */
-        .mobile-menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--dark);
-            width: 44px;
-            height: 44px;
-            align-items: center;
-            justify-content: center;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .mobile-menu-toggle:hover {
-            background-color: #f0f0f0;
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-menu-toggle {
-                display: flex;
-                order: 3; /* Position at the end */
-            }
-            
-            .logo {
-                order: 1; /* Position at the start */
-            }
-            
-            nav {
-                order: 2; /* Position in the middle */
-                flex-grow: 1;
-                display: flex;
-                justify-content: flex-end;
-            }
-            
-            nav ul {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: white;
-                box-shadow: var(--shadow);
-                padding: 20px;
-                gap: 15px;
-                z-index: 99;
-            }
-            
-            nav ul.active {
-                display: flex;
-            }
-
-            nav a {
-                padding: 12px 15px;
-                display: block;
-                border-radius: 5px;
-            }
-
-            nav a:hover {
-                background-color: rgba(37, 211, 102, 0.1);
-            }
-        }
 
         /* Prevent horizontal scroll on mobile */
         html, body {
@@ -1216,9 +1179,6 @@
                         </li>
                     </ul>
                 </nav>
-                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
-                    <i class="fas fa-bars"></i>
-                </button>
             </div>
         </div>
     </header>
@@ -1458,8 +1418,6 @@
         const closeCallConfirmation = document.getElementById('closeCallConfirmation');
         const newsletterPopup = document.getElementById('newsletterPopup');
         const closeNewsletter = document.getElementById('closeNewsletter');
-        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
-        const navMenu = document.getElementById('navMenu');
 
         // Initialize menu
         function initializeMenu() {
@@ -1775,25 +1733,6 @@
             window.location.href = 'tel:+918686636786';
         });
 
-        // Mobile menu toggle
-        mobileMenuToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('nav') && !event.target.closest('.mobile-menu-toggle')) {
-                navMenu.classList.remove('active');
-            }
-        });
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', function() {
-                navMenu.classList.remove('active');
-            });
-        });
-
         // Event listeners
         cartIcon.addEventListener('click', function() {
             cartModal.style.display = 'block';
@@ -1840,11 +1779,6 @@
                 newsletterPopup.style.display = 'flex';
             }, 2000);
         });
-
-        // Prevent background scrolling when modal is open
-        function toggleBodyScroll(enable) {
-            document.body.style.overflow = enable ? '' : 'hidden';
-        }
 
         // Initialize the website
         initializeMenu();
