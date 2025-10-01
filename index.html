@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tawakkul Food Court - Middle Eastern Magic in Every Bite</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #25D366; /* WhatsApp Green */
+            --secondary: #1DA1F2; /* Twitter Blue */
+            --accent: #FF9900; /* Orange */
+            --light: #f8f8f8;
+            --dark: #333;
+            --yellow: #FFD700; /* Yellow */
+            --red: #FF3C00; /* Red */
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --text-dark: #000000; /* Black for prices */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape */
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            padding: 8px 12px; /* Better touch targets */
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            background-color: rgba(37, 211, 102, 0.1);
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1754047167137-67ea6bc803b7?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+            background-size: cover;
+            background-position: center;
+            color: rgb(255, 255, 255);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            border: none;
+            cursor: pointer;
+            min-height: 44px; /* Better touch target */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Menu Section with Background Image - FIXED */
+        .menu-section {
+            position: relative;
+            padding: 50px 0;
+            background: url('https://plus.unsplash.com/premium_photo-1675802519665-bcb0580eb713?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .menu-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+        }
+
+        .menu-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 0 0 30px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--secondary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .menu-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .menu-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            display: block; /* Remove extra space below image */
+        }
+
+        .menu-card-content {
+            padding: 20px;
+        }
+
+        .menu-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            line-height: 1.3;
+        }
+
+        .menu-price {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            min-height: 44px; /* Better touch target */
+        }
+
+        .add-to-cart:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Cart Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            width: 90%;
+            max-width: 800px;
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .close-modal:hover {
+            background-color: #f0f0f0;
+        }
+
+        .cart-items {
+            margin: 20px 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-price {
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background-color: #eee;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s;
+            min-height: 44px; /* Better touch target */
+        }
+
+        .quantity-btn:hover {
+            background-color: #ddd;
+        }
+
+        .quantity {
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .remove-item {
+            color: var(--red);
+            background: none;
+            border: none;
+            cursor: pointer;
+            margin-left: 15px;
+            padding: 8px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .remove-item:hover {
+            background-color: rgba(255, 60, 0, 0.1);
+        }
+
+        .extra-mayo {
+            margin: 15px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .extra-mayo input {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .extra-mayo label {
+            cursor: pointer;
+        }
+
+        .delivery-info {
+            margin: 15px 0;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-radius: 5px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 20px 0;
+            color: var(--secondary);
+            padding: 15px 0;
+            border-top: 2px solid #eee;
+        }
+
+        .location-section {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .location-btn {
+            background-color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .order-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background-color 0.3s;
+            min-height: 60px; /* Better touch target */
+        }
+
+        .order-btn:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Thank You Popup */
+        .thank-you-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thank-you-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .thank-you-content i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .thank-you-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: url('https://media.istockphoto.com/id/888999404/photo/unhealthy-food-ready-to-eat.jpg?s=2048x2048&w=is&k=20&c=71KeHyyjmGrkRBxxAj5lqpfohdOnrTsuvHg7rY9wH9o=') no-repeat center center;
+            background-size: cover;
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: 50px 0;
+            background-color: #f9f9f9;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-column {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-column h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .footer-column p, .footer-column a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--primary);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+                padding: 10px 0;
+            }
+
+            .logo {
+                justify-content: center;
+                flex-direction: row;
+                gap: 10px;
+            }
+
+            .logo h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+                padding: 0 10px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+                margin: 20px auto;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .item-quantity {
+                align-self: stretch;
+                justify-content: space-between;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 25px;
+            }
+
+            .footer-column {
+                align-items: center;
+            }
+
+            .footer-column .logo {
+                margin-bottom: 10px;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .section-title h2 {
+                font-size: 1.7rem;
+            }
+            
+            /* Improved mobile menu grid */
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                gap: 15px;
+            }
+            
+            .menu-card {
+                margin: 0 auto;
+                max-width: 100%;
+            }
+            
+            .menu-img {
+                height: 180px;
+            }
+            
+            .menu-card-content {
+                padding: 15px;
+            }
+            
+            .menu-title {
+                font-size: 1.1rem;
+            }
+            
+            .menu-price {
+                font-size: 1.1rem;
+            }
+            
+            .add-to-cart {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.3rem;
+            }
+
+            .hero h2 {
+                font-size: 1.7rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .btn {
+                padding: 12px 18px;
+                font-size: 0.9rem;
+            }
+
+            .modal-content {
+                padding: 15px;
+                margin: 10px auto;
+            }
+
+            .thank-you-content {
+                padding: 30px 20px;
+            }
+
+            .thank-you-content h3 {
+                font-size: 1.5rem;
+            }
+            
+            /* Further mobile optimizations */
+            .menu-section {
+                padding: 30px 0;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .menu-card {
+                max-width: 100%;
+            }
+            
+            .menu-img {
+                height: 160px;
+            }
+            
+            .menu-card-content {
+                padding: 12px;
+            }
+            
+            .menu-title {
+                font-size: 1rem;
+                line-height: 1.2;
+            }
+            
+            .menu-price {
+                font-size: 1rem;
+            }
+            
+            .add-to-cart {
+                padding: 10px;
+                font-size: 0.85rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.5rem;
+            }
+
+            .cart-item {
+                padding: 12px 0;
+            }
+
+            .quantity-btn {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .container {
+                width: 95%;
+                padding: 0 10px;
+            }
+            
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .menu-card-content {
+                padding: 10px;
+            }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s, opacity 0.3s;
+            max-width: calc(100vw - 40px);
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Location Map */
+        .location-map {
+            height: 200px;
+            margin-top: 15px;
+            border-radius: 5px;
+            overflow: hidden;
+            display: none;
+        }
+
+        /* Enhanced Location Display */
+        .location-display-container {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #e0e0e0;
+        }
+
+        .location-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .location-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .location-icon::before {
+            content: '';
+            width: 12px;
+            height: 12px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        .location-icon::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid var(--red);
+        }
+
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .location-address {
+            font-weight: 500;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .location-coordinates {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .location-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .location-action-btn {
+            padding: 8px 12px;
+            background-color: #f0f0f0;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            min-height: 36px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .location-action-btn:hover {
+            background-color: #e0e0e0;
+        }
+
+        .location-action-btn.primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .location-action-btn.primary:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Loading Animation */
+        .location-loading {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Floating WhatsApp Button */
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            z-index: 999;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+        .floating-whatsapp i {
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        /* Call Confirmation Popup */
+        .call-confirmation-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .call-confirmation-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .call-confirmation-content i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .call-confirmation-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+
+        /* Newsletter Popup */
+        .newsletter-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1001;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .newsletter-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .newsletter-content i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .newsletter-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        /* Mobile Menu Toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            width: 44px;
+            height: 44px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-menu-toggle:hover {
+            background-color: #f0f0f0;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-menu-toggle {
+                display: flex;
+            }
+            
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                box-shadow: var(--shadow);
+                padding: 20px;
+                gap: 15px;
+                z-index: 99;
+            }
+            
+            nav ul.active {
+                display: flex;
+            }
+
+            nav a {
+                padding: 12px 15px;
+                display: block;
+                border-radius: 5px;
+            }
+
+            nav a:hover {
+                background-color: rgba(37, 211, 102, 0.1);
+            }
+        }
+
+        /* Prevent horizontal scroll on mobile */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling for better UX */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Focus styles for accessibility */
+        button:focus-visible,
+        a:focus-visible,
+        input:focus-visible {
+            outline: 2px solid var(--primary);
+            outline-offset: 2px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating WhatsApp Button -->
+    <div class="floating-whatsapp" id="floatingWhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="https://i.postimg.cc/JtVqrjnB/Chat-GPT-Image-Oct-1-2025-11-36-58-PM.png" alt="Tawakkul Food Court Logo">
+                    <h1>TAWAKKUL <span>FOOD COURT</span></h1>
+                </div>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li class="cart-icon" id="cartIcon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count">0</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Middle Eastern Magic in Every Bite</h2>
+            <p>Fresh ingredients. Authentic recipes. Unforgettable flavor.</p>
+            <a href="#menu" class="btn">Order Now</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu-section" id="menu">
+        <div class="container">
+            <div class="menu-content">
+                <div class="section-title">
+                    <h2>Our Menu</h2>
+                </div>
+                <div class="menu-grid" id="menuGrid">
+                    <!-- Menu items will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h2>Your Order</h2>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+            </div>
+            <div class="extra-mayo">
+                <input type="checkbox" id="extraMayo">
+                <label for="extraMayo">Add Extra Mayonnaise (+₹20)</label>
+            </div>
+            <div class="delivery-info" id="deliveryInfo">
+                <!-- Delivery information will be displayed here -->
+            </div>
+            <div class="location-section">
+                <center><button class="btn location-btn" id="detectLocation">
+                    <i class="fas fa-map-marker-alt"></i> Detect My Location
+                </button></center>
+                
+                <div class="location-display-container" id="locationDisplayContainer">
+                    <div class="location-header">
+                        <div class="location-icon"></div>
+                        <h3>Your Location</h3>
+                    </div>
+                    <div class="location-details">
+                        <div class="location-address" id="locationAddress"></div>
+                        <div class="location-coordinates" id="locationCoordinates"></div>
+                    </div>
+                    <div class="location-actions">
+                        <button class="location-action-btn primary" id="copyLocation">
+                            <i class="fas fa-copy"></i> Copy Address
+                        </button>
+                        <button class="location-action-btn" id="openInMaps">
+                            <i class="fas fa-external-link-alt"></i> Open in Maps
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="location-map" id="locationMap">
+                    <!-- Map will be displayed here -->
+                </div>
+            </div>
+            <div class="cart-total">
+                Total: ₹<span id="cartTotal">0</span>
+            </div>
+            <button class="order-btn" id="placeOrder">
+                <i class="fab fa-whatsapp"></i> Place Order via WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Thank You Popup -->
+    <div class="thank-you-popup" id="thankYouPopup">
+        <div class="thank-you-content">
+            <i class="fas fa-check-circle"></i>
+            <h3>Thank You!</h3>
+            <p>Your order has been placed successfully. We'll contact you shortly.</p>
+            <button class="btn" id="closeThankYou">Continue Shopping</button>
+        </div>
+    </div>
+
+    <!-- Call Confirmation Popup -->
+    <div class="call-confirmation-popup" id="callConfirmationPopup">
+        <div class="call-confirmation-content">
+            <i class="fas fa-phone-alt"></i>
+            <h3>Please Call to Confirm</h3>
+            <p>We'll call you shortly to confirm your order details.</p>
+            <p>You can also call us directly at: <strong>+91 8686636786</strong></p>
+            <button class="btn" id="closeCallConfirmation">OK</button>
+        </div>
+    </div>
+
+    <!-- Newsletter Popup -->
+    <div class="newsletter-popup" id="newsletterPopup">
+        <div class="newsletter-content">
+            <i class="fas fa-phone-alt"></i>
+            <h3>Call Us to Confirm Your Order</h3>
+            <p>Please call us once to confirm your order after placing it via WhatsApp.</p>
+            <p>We're available from <strong>5:00 PM to 10:00 PM</strong></p>
+            <button class="btn" id="closeNewsletter">OK, I Understand</button>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="section-title">
+                    <h2 style="color: white;">Contact Us</h2>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h3>Our Location</h3>
+                        <p>Opposite Zeeshan Kirana & General Store, H.N Function Hall Road, Mahbubnagar</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <h3>Phone Number</h3>
+                        <p>+91 8686636786</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>Opening Hours</h3>
+                        <p>Monday - Sunday: 5:00 PM - 10:00 PM</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Find Us</h2>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.622366670241!2d78.03129017501434!3d17.47957598342126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcbf1a5e3f5c8f9%3A0x9a4e676c1e1e4c4d!2sMahbubnagar%2C%20Telangana!5e0!3m2!1sen!2sin!4v1696062000000!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo">
+                        <img src="https://i.postimg.cc/JtVqrjnB/Chat-GPT-Image-Oct-1-2025-11-36-58-PM.png" alt="Tawakkul Food Court Logo">
+                        <h1>TAWAKKUL <span>FOOD COURT</span></h1>
+                    </div>
+                    <p>Bringing authentic Middle Eastern flavors to Mahbubnagar with passion and dedication. Our commitment to quality and taste ensures every dish is a delightful experience.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <a href="#home">Home</a>
+                    <a href="#menu">Menu</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Opposite Zeeshan Kirana & General Store, H.N Function Hall Road, Mahbubnagar</p>
+                    <p><i class="fas fa-phone-alt"></i> +91 8686636786</p>
+                    <p><i class="fas fa-clock"></i> Mon-Sun: 5:00 PM - 10:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Tawakkul Food Court. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Item added to cart!</span>
+    </div>
+
+    <script>
+        // Menu Data - Updated with new items and prices
+        const menuItems = [
+            { id: 1, name: "SPECIAL CHICKEN PIZZA", price: 249, image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" },
+            { id: 2, name: "CHICKEN CHEEZ PIZZA", price: 170, image: "https://media.istockphoto.com/id/1075504412/photo/paneer-pizza-with-vegetables-and-cheese.jpg?s=2048x2048&w=is&k=20&c=sA33kUm2YQj83vXpEBBvvAZIeFZrWQ-tHn1RKxDdG1I=" },
+            { id: 3, name: "VEG PIZZA", price: 110, image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" },
+            { id: 4, name: "CHICKEN SHAWARMA SPECIAL", price: 120, image: "https://th.bing.com/th/id/OIP.Zd2tFA-GjKmKPV0OAGz_5QAAAA?w=178&h=160&c=7&r=0&o=7&pid=1.7&rm=3" },
+            { id: 5, name: "CHICKEN SHAWARMA REGULAR", price: 100, image: "https://th.bing.com/th/id/OIP.4B-XD17_6DXXrzKzE0JvSAHaE7?w=280&h=183&c=7&r=0&o=5&pid=1.7" },
+            { id: 6, name: "CHICKEN SHAWARMA MINI", price: 50, image: "https://th.bing.com/th/id/OIP.WMlFyVA87YsNHqawyKycgwHaE7?w=270&h=180&c=7&r=0&o=7&pid=1.7&rm=3" },
+            { id: 7, name: "VEG SHAWARMA", price: 50, image: "https://th.bing.com/th/id/OIP.q3nLSZ9M_87jPaZ2dljrAgHaEK?w=320&h=180&c=7&r=0&o=7&pid=1.7&rm=3" },
+            { id: 8, name: "SPECIAL CHICKEN BURGER", price: 100, image: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1299&q=80" },
+            { id: 9, name: "CHICKEN CHEEZ BURGER", price: 80, image: "https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1115&q=80" },
+            { id: 10, name: "VEG BURGER", price: 80, image: "https://th.bing.com/th/id/OIP.s07UsAo90pfNbIUBM-OTbAHaHa?w=234&h=180&c=7&r=0&o=7&pid=1.7&rm=3" },
+            { id: 11, name: "CHICKEN SANDWICH", price: 80, image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1173&q=80" },
+            { id: 12, name: "VEG SANDWICH", price: 80, image: "https://images.unsplash.com/photo-1553909489-cd47e0907980?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1025&q=80" }
+        ];
+
+        // Cart functionality
+        let cart = [];
+        let customerLocation = null;
+        const cartIcon = document.getElementById('cartIcon');
+        const cartCount = document.querySelector('.cart-count');
+        const cartModal = document.getElementById('cartModal');
+        const closeModal = document.getElementById('closeModal');
+        const cartItems = document.getElementById('cartItems');
+        const cartTotal = document.getElementById('cartTotal');
+        const placeOrder = document.getElementById('placeOrder');
+        const thankYouPopup = document.getElementById('thankYouPopup');
+        const closeThankYou = document.getElementById('closeThankYou');
+        const detectLocation = document.getElementById('detectLocation');
+        const locationDisplayContainer = document.getElementById('locationDisplayContainer');
+        const locationAddress = document.getElementById('locationAddress');
+        const locationCoordinates = document.getElementById('locationCoordinates');
+        const copyLocation = document.getElementById('copyLocation');
+        const openInMaps = document.getElementById('openInMaps');
+        const locationMap = document.getElementById('locationMap');
+        const extraMayoCheckbox = document.getElementById('extraMayo');
+        const menuGrid = document.getElementById('menuGrid');
+        const toast = document.getElementById('toast');
+        const toastMessage = document.getElementById('toastMessage');
+        const deliveryInfo = document.getElementById('deliveryInfo');
+        const floatingWhatsApp = document.getElementById('floatingWhatsApp');
+        const callConfirmationPopup = document.getElementById('callConfirmationPopup');
+        const closeCallConfirmation = document.getElementById('closeCallConfirmation');
+        const newsletterPopup = document.getElementById('newsletterPopup');
+        const closeNewsletter = document.getElementById('closeNewsletter');
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        // Initialize menu
+        function initializeMenu() {
+            menuGrid.innerHTML = '';
+            menuItems.forEach(item => {
+                const menuCard = document.createElement('div');
+                menuCard.className = 'menu-card';
+                menuCard.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="menu-img" loading="lazy">
+                    <div class="menu-card-content">
+                        <h3 class="menu-title">${item.name}</h3>
+                        <p class="menu-price">₹${item.price}</p>
+                        <button class="add-to-cart" data-id="${item.id}">Add to Cart</button>
+                    </div>
+                `;
+                menuGrid.appendChild(menuCard);
+            });
+
+            // Add event listeners to Add to Cart buttons
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    addToCart(itemId);
+                });
+            });
+        }
+
+        // Show toast notification
+        function showToast(message) {
+            toastMessage.textContent = message;
+            toast.classList.add('show');
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Add item to cart
+        function addToCart(itemId) {
+            const item = menuItems.find(i => i.id === itemId);
+            const existingItem = cart.find(i => i.id === itemId);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: item.id,
+                    name: item.name,
+                    price: item.price,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            showToast(`${item.name} added to cart!`);
+        }
+
+        // Update cart display
+        function updateCart() {
+            cartCount.textContent = cart.reduce((total, item) => total + item.quantity, 0);
+            
+            cartItems.innerHTML = '';
+            let subtotal = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="item-details">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-price">₹${item.price} x ${item.quantity} = ₹${itemTotal}</div>
+                    </div>
+                    <div class="item-quantity">
+                        <button class="quantity-btn decrease" data-id="${item.id}">-</button>
+                        <span class="quantity">${item.quantity}</span>
+                        <button class="quantity-btn increase" data-id="${item.id}">+</button>
+                        <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.decrease').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    decreaseQuantity(itemId);
+                });
+            });
+            
+            document.querySelectorAll('.increase').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    increaseQuantity(itemId);
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', function() {
+                    const itemId = parseInt(this.getAttribute('data-id'));
+                    removeFromCart(itemId);
+                });
+            });
+            
+            // Calculate delivery charges
+            const deliveryCharge = subtotal >= 299 ? 0 : 50;
+            const extraMayoCharge = extraMayoCheckbox.checked ? 20 : 0;
+            const total = subtotal + deliveryCharge + extraMayoCharge;
+            
+            // Update delivery info
+            deliveryInfo.innerHTML = `
+                <p><strong>Delivery Policy:</strong> Orders above ₹299 qualify for free delivery. Orders below ₹299 incur a ₹50 delivery charge.</p>
+                <p>Subtotal: ₹${subtotal}</p>
+                <p>Delivery Charge: ₹${deliveryCharge} ${deliveryCharge === 0 ? '(FREE)' : ''}</p>
+                ${extraMayoCheckbox.checked ? '<p>Extra Mayonnaise: ₹20</p>' : ''}
+            `;
+            
+            cartTotal.textContent = total;
+        }
+
+        // Increase item quantity
+        function increaseQuantity(itemId) {
+            const item = cart.find(i => i.id === itemId);
+            if (item) {
+                item.quantity += 1;
+                updateCart();
+            }
+        }
+
+        // Decrease item quantity
+        function decreaseQuantity(itemId) {
+            const item = cart.find(i => i.id === itemId);
+            if (item) {
+                if (item.quantity > 1) {
+                    item.quantity -= 1;
+                } else {
+                    removeFromCart(itemId);
+                    return;
+                }
+                updateCart();
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(itemId) {
+            const item = cart.find(i => i.id === itemId);
+            cart = cart.filter(i => i.id !== itemId);
+            updateCart();
+            showToast(`${item.name} removed from cart!`);
+        }
+
+        // Detect location
+        detectLocation.addEventListener('click', function() {
+            if (navigator.geolocation) {
+                // Show loading state
+                locationDisplayContainer.style.display = 'block';
+                locationDisplayContainer.innerHTML = `
+                    <div class="location-loading">
+                        <div class="loading-spinner"></div>
+                        <span>Detecting your location...</span>
+                    </div>
+                `;
+                
+                navigator.geolocation.getCurrentPosition(
+                    function(position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
+                        customerLocation = { latitude, longitude };
+                        
+                        // Reverse geocoding to get address
+                        fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
+                            .then(response => response.json())
+                            .then(data => {
+                                const address = `${data.locality}, ${data.city}, ${data.countryName}`;
+                                
+                                // Update location display
+                                locationDisplayContainer.innerHTML = `
+                                    <div class="location-header">
+                                        <div class="location-icon"></div>
+                                        <h3>Your Location</h3>
+                                    </div>
+                                    <div class="location-details">
+                                        <div class="location-address">${address}</div>
+                                        <div class="location-coordinates">${latitude.toFixed(6)}, ${longitude.toFixed(6)}</div>
+                                    </div>
+                                    <div class="location-actions">
+                                        <button class="location-action-btn primary" id="copyLocation">
+                                            <i class="fas fa-copy"></i> Copy Address
+                                        </button>
+                                        <button class="location-action-btn" id="openInMaps">
+                                            <i class="fas fa-external-link-alt"></i> Open in Maps
+                                        </button>
+                                    </div>
+                                `;
+                                
+                                // Reattach event listeners
+                                document.getElementById('copyLocation').addEventListener('click', function() {
+                                    navigator.clipboard.writeText(address)
+                                        .then(() => showToast("Address copied to clipboard!"))
+                                        .catch(() => showToast("Failed to copy address"));
+                                });
+                                
+                                document.getElementById('openInMaps').addEventListener('click', function() {
+                                    window.open(`https://www.google.com/maps?q=${latitude},${longitude}`, '_blank');
+                                });
+                                
+                                // Show map with customer location
+                                locationMap.innerHTML = `
+                                    <iframe 
+                                        src="https://maps.google.com/maps?q=${latitude},${longitude}&z=15&output=embed" 
+                                        width="100%" 
+                                        height="100%" 
+                                        style="border:0;" 
+                                        allowfullscreen="" 
+                                        loading="lazy">
+                                    </iframe>
+                                `;
+                                locationMap.style.display = 'block';
+                                
+                                showToast("Location detected successfully!");
+                            })
+                            .catch(error => {
+                                locationDisplayContainer.innerHTML = `
+                                    <div class="location-details">
+                                        <div class="location-address">Unable to retrieve address. Please enter manually.</div>
+                                    </div>
+                                `;
+                                showToast("Could not retrieve address details");
+                            });
+                    },
+                    function(error) {
+                        locationDisplayContainer.innerHTML = `
+                            <div class="location-details">
+                                <div class="location-address">Location access denied. Please enter your address manually.</div>
+                            </div>
+                        `;
+                        showToast("Location access denied");
+                    }
+                );
+            } else {
+                locationDisplayContainer.innerHTML = `
+                    <div class="location-details">
+                        <div class="location-address">Geolocation is not supported by this browser.</div>
+                    </div>
+                `;
+                locationDisplayContainer.style.display = 'block';
+            }
+        });
+
+        // Place order via WhatsApp
+        placeOrder.addEventListener('click', function() {
+            if (cart.length === 0) {
+                alert('Your cart is empty. Please add items to your cart before placing an order.');
+                return;
+            }
+            
+            let orderMessage = "Hello, I would like to place an order from Tawakkul Food Court:\n\n";
+            
+            cart.forEach(item => {
+                orderMessage += `${item.name} - ${item.quantity} x ₹${item.price} = ₹${item.price * item.quantity}\n`;
+            });
+            
+            let subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const deliveryCharge = subtotal >= 299 ? 0 : 50;
+            const extraMayoCharge = extraMayoCheckbox.checked ? 20 : 0;
+            const total = subtotal + deliveryCharge + extraMayoCharge;
+            
+            orderMessage += `\nSubtotal: ₹${subtotal}`;
+            
+            if (extraMayoCheckbox.checked) {
+                orderMessage += "\nExtra Mayonnaise: ₹20";
+            }
+            
+            orderMessage += `\nDelivery Charge: ₹${deliveryCharge} ${deliveryCharge === 0 ? '(FREE)' : ''}`;
+            orderMessage += `\nTotal: ₹${total}\n`;
+            
+            if (locationDisplayContainer.style.display === 'block') {
+                const address = locationAddress.textContent;
+                orderMessage += `\nDelivery Address: ${address}\n`;
+                
+                if (customerLocation) {
+                    orderMessage += `Location Coordinates: ${customerLocation.latitude}, ${customerLocation.longitude}\n`;
+                    orderMessage += `Google Maps: https://www.google.com/maps?q=${customerLocation.latitude},${customerLocation.longitude}\n`;
+                }
+            }
+            
+            orderMessage += "\nPlease confirm my order. Thank you!";
+            
+            const phoneNumber = "918686636786";
+            const encodedMessage = encodeURIComponent(orderMessage);
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappURL, '_blank');
+            
+            // Show call confirmation popup
+            callConfirmationPopup.style.display = 'flex';
+            
+            // Clear cart
+            cart = [];
+            updateCart();
+            cartModal.style.display = 'none';
+            locationDisplayContainer.style.display = 'none';
+            locationMap.style.display = 'none';
+            extraMayoCheckbox.checked = false;
+            customerLocation = null;
+        });
+
+        // Floating WhatsApp button - direct call
+        floatingWhatsApp.addEventListener('click', function() {
+            window.location.href = 'tel:+918686636786';
+        });
+
+        // Mobile menu toggle
+        mobileMenuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('nav') && !event.target.closest('.mobile-menu-toggle')) {
+                navMenu.classList.remove('active');
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function() {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Event listeners
+        cartIcon.addEventListener('click', function() {
+            cartModal.style.display = 'block';
+        });
+
+        closeModal.addEventListener('click', function() {
+            cartModal.style.display = 'none';
+        });
+
+        closeThankYou.addEventListener('click', function() {
+            thankYouPopup.style.display = 'none';
+        });
+
+        closeCallConfirmation.addEventListener('click', function() {
+            callConfirmationPopup.style.display = 'none';
+        });
+
+        closeNewsletter.addEventListener('click', function() {
+            newsletterPopup.style.display = 'none';
+        });
+
+        extraMayoCheckbox.addEventListener('change', function() {
+            updateCart();
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target === cartModal) {
+                cartModal.style.display = 'none';
+            }
+            if (event.target === thankYouPopup) {
+                thankYouPopup.style.display = 'none';
+            }
+            if (event.target === callConfirmationPopup) {
+                callConfirmationPopup.style.display = 'none';
+            }
+            if (event.target === newsletterPopup) {
+                newsletterPopup.style.display = 'none';
+            }
+        });
+
+        // Show newsletter popup on page load
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                newsletterPopup.style.display = 'flex';
+            }, 2000);
+        });
+
+        // Prevent background scrolling when modal is open
+        function toggleBodyScroll(enable) {
+            document.body.style.overflow = enable ? '' : 'hidden';
+        }
+
+        // Initialize the website
+        initializeMenu();
+    </script>
+</body>
+</html>
