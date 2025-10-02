@@ -244,6 +244,7 @@
             height: 200px;
             width: 100%;
             overflow: hidden;
+            position: relative;
         }
 
         .menu-img {
@@ -251,6 +252,11 @@
             height: 100%;
             object-fit: cover;
             display: block; /* Remove extra space below image */
+            transition: transform 0.3s;
+        }
+
+        .menu-card:hover .menu-img {
+            transform: scale(1.05);
         }
 
         .menu-card-content {
@@ -265,7 +271,7 @@
             margin-bottom: 10px;
             color: var(--secondary);
             line-height: 1.3;
-            flex-grow: 1; /* Make title take available space */
+            flex-grow: 1;
             min-height: 2.6em; /* Ensure consistent height for titles */
         }
 
@@ -1396,82 +1402,81 @@
     </div>
 
     <script>
-       // Menu Data - Cleaned & Consistent (Updated Image Links)
-const menuItems = [
-  { 
-    id: 1, 
-    name: "SPECIAL CHICKEN PIZZA", 
-    price: 249, 
-    image: "https://th.bing.com/th/id/OIP.YImzfxf1fvcb_oQtPOTirwHaE8?w=318&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
-  },
-  { 
-    id: 2, 
-    name: "CHICKEN CHEEZ PIZZA", 
-    price: 170, 
-    image: "https://th.bing.com/th/id/R.6LZMqeA6IijbUpCO4qKM1g?pid=ImgDet&rs=1" 
-  },
-  { 
-    id: 3, 
-    name: "VEG PIZZA", 
-    price: 110, 
-    image: "https://th.bing.com/th/id/OIP.e8DKB-liIZTbNTNwfw1m0gHaE8?w=210&h=150&c=6&o=7&pid=1.7&rm=3" 
-  },
-  { 
-    id: 4, 
-    name: "CHICKEN SHAWARMA SPECIAL", 
-    price: 120, 
-    image: "https://th.bing.com/th/id/R.Zd2tFA-GjKmKPV0OAGz_5Q?pid=ImgDet&rs=1" 
-  },
-  { 
-    id: 5, 
-    name: "CHICKEN SHAWARMA REGULAR", 
-    price: 100, 
-    image: "https://th.bing.com/th/id/R.4B-XD17_6DXXrzKzE0JvSA?pid=ImgDet&rs=1" 
-  },
-  { 
-    id: 6, 
-    name: "CHICKEN SHAWARMA MINI", 
-    price: 50, 
-    image: "https://th.bing.com/th/id/R.qHhmqHDbOmqIlqkVP3q5sw?pid=ImgDet&rs=1" 
-  },
-  { 
-    id: 7, 
-    name: "VEG SHAWARMA", 
-    price: 50, 
-    image: "https://th.bing.com/th/id/R.q3nLSZ9M_87jPaZ2dljrAg?pid=ImgDet&rs=1" 
-  },
-  { 
-    id: 8, 
-    name: "SPECIAL CHICKEN BURGER", 
-    price: 100, 
-    image: "https://th.bing.com/th/id/R.dVNKKbgcf1IEJPkKgf6YFA?pid=ImgDet&rs=1" 
-  },
-  { 
-    id: 9, 
-    name: "CHICKEN CHEEZ BURGER", 
-    price: 80, 
-    image: "https://th.bing.com/th/id/R.2Y68AW8WpJTJmqDPNcPtDg?pid=ImgDet&rs=1" 
-  },
-  { 
-    id: 10, 
-    name: "VEG BURGER", 
-    price: 80, 
-    image: "https://th.bing.com/th/id/R._dpIzRlJ6RJbWBGMW8u8WQ?pid=ImgDet&rs=1" 
-  },
-  { 
-    id: 11, 
-    name: "CHICKEN SANDWICH", 
-    price: 80, 
-    image: "https://th.bing.com/th/id/OIP.4kbJ24hOkkedh9mSn1aLGwHaE8?w=288&h=192&c=7&r=0&o=5&pid=1.7" 
-  },
-  { 
-    id: 12, 
-    name: "VEG SANDWICH", 
-    price: 80, 
-    image: "https://th.bing.com/th/id/R.br_ukkRB_2p6OMWAhZjBHg?pid=ImgDet&rs=1" 
-  }
-];
-
+        // Menu Data with working image URLs
+        const menuItems = [
+            { 
+                id: 1, 
+                name: "SPECIAL CHICKEN PIZZA", 
+                price: 249, 
+                image: "https://images.pexels.com/photos/2714722/pexels-photo-2714722.jpeg?_gl=1*13ihjbo*_ga*MjA3NjUxMzYzNy4xNzU4MTI2Nzky*_ga_8JE65Q40S6*czE3NTkzOTUzMTAkbzIkZzEkdDE3NTkzOTUzNTUkajE1JGwwJGgw" 
+            },
+            { 
+                id: 2, 
+                name: "CHICKEN CHEEZ PIZZA", 
+                price: 170, 
+                image: "https://images.pexels.com/photos/20115307/pexels-photo-20115307.jpeg" 
+            },
+            { 
+                id: 3, 
+                name: "VEG PIZZA", 
+                price: 110, 
+                image: "https://images.pexels.com/photos/11975887/pexels-photo-11975887.jpeg" 
+            },
+            { 
+                id: 4, 
+                name: "CHICKEN SHAWARMA SPECIAL", 
+                price: 120, 
+                image: "https://images.pexels.com/photos/16022887/pexels-photo-16022887.jpeg?_gl=1*1rvnews*_ga*MjA3NjUxMzYzNy4xNzU4MTI2Nzky*_ga_8JE65Q40S6*czE3NTkzOTc1NDkkbzMkZzEkdDE3NTkzOTgwNTMkajU3JGwwJGgw" 
+            },
+            { 
+                id: 5, 
+                name: "CHICKEN SHAWARMA REGULAR", 
+                price: 100, 
+                image: "https://images.pexels.com/photos/9980749/pexels-photo-9980749.jpeg?_gl=1*1naqbca*_ga*MjA3NjUxMzYzNy4xNzU4MTI2Nzky*_ga_8JE65Q40S6*czE3NTkzOTc1NDkkbzMkZzEkdDE3NTkzOTgxODkkajI2JGwwJGgw" 
+            },
+            { 
+                id: 6, 
+                name: "CHICKEN SHAWARMA MINI", 
+                price: 50, 
+                image: "https://images.pexels.com/photos/5779364/pexels-photo-5779364.jpeg?_gl=1*p5ysx9*_ga*MjA3NjUxMzYzNy4xNzU4MTI2Nzky*_ga_8JE65Q40S6*czE3NTkzOTc1NDkkbzMkZzEkdDE3NTkzOTgxNTUkajYwJGwwJGgw" 
+            },
+            { 
+                id: 7, 
+                name: "VEG SHAWARMA", 
+                price: 50, 
+                image: "https://images.pexels.com/photos/34106240/pexels-photo-34106240.jpeg?_gl=1*n7csp8*_ga*MjA3NjUxMzYzNy4xNzU4MTI2Nzky*_ga_8JE65Q40S6*czE3NTkzOTc1NDkkbzMkZzEkdDE3NTkzOTgyNTYkajI3JGwwJGgw" 
+            },
+            { 
+                id: 8, 
+                name: "SPECIAL CHICKEN BURGER", 
+                price: 100, 
+                image: "https://images.pexels.com/photos/2874990/pexels-photo-2874990.jpeg" 
+            },
+            { 
+                id: 9, 
+                name: "CHICKEN CHEEZ BURGER", 
+                price: 80, 
+                image: "https://images.pexels.com/photos/6896379/pexels-photo-6896379.jpeg" 
+            },
+            { 
+                id: 10, 
+                name: "VEG BURGER", 
+                price: 80, 
+                image: "https://images.pexels.com/photos/2282536/pexels-photo-2282536.jpeg?_gl=1*1xbwarf*_ga*MjA3NjUxMzYzNy4xNzU4MTI2Nzky*_ga_8JE65Q40S6*czE3NTkzOTc1NDkkbzMkZzEkdDE3NTkzOTk3MDYkajYwJGwwJGgw" 
+            },
+            { 
+                id: 11, 
+                name: "CHICKEN SANDWICH", 
+                price: 80, 
+                image: "https://images.pexels.com/photos/1885578/pexels-photo-1885578.jpeg?_gl=1*14u08d0*_ga*MjA3NjUxMzYzNy4xNzU4MTI2Nzky*_ga_8JE65Q40S6*czE3NTkzOTc1NDkkbzMkZzEkdDE3NTkzOTk4MjYkajE1JGwwJGgw" 
+            },
+            { 
+                id: 12, 
+                name: "VEG SANDWICH", 
+                price: 80, 
+                image: "https://images.pexels.com/photos/17486821/pexels-photo-17486821.jpeg?_gl=1*12b75k1*_ga*MjA3NjUxMzYzNy4xNzU4MTI2Nzky*_ga_8JE65Q40S6*czE3NTkzOTc1NDkkbzMkZzEkdDE3NTk0MDAwMzgkajYwJGwwJGgw" 
+            }
+        ];
 
         // Cart functionality
         let cart = [];
@@ -1871,6 +1876,3 @@ const menuItems = [
     </script>
 </body>
 </html>
-
-
-
