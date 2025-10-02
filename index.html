@@ -1396,21 +1396,82 @@
     </div>
 
     <script>
-       // Menu Data - Updated with new items and prices and consistent image sizes
+       // Menu Data - Cleaned & Consistent (Updated Image Links)
 const menuItems = [
-    { id: 1, name: "SPECIAL CHICKEN PIZZA", price: 249, image: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&fit=crop" },
-    { id: 2, name: "CHICKEN CHEEZ PIZZA", price: 170, image: "https://th.bing.com/th/id/R.6LZMqeA6IijbUpCO4qKM1g?pid=ImgDet&w=300&h=200&rs=1" },
-    { id: 3, name: "VEG PIZZA", price: 110, image: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&fit=crop" },
-    { id: 4, name: "CHICKEN SHAWARMA SPECIAL", price: 120, image: "https://th.bing.com/th/id/R.Zd2tFA-GjKmKPV0OAGz_5Q?pid=ImgDet&w=300&h=200&rs=1" },
-    { id: 5, name: "CHICKEN SHAWARMA REGULAR", price: 100, image: "https://th.bing.com/th/id/R.4B-XD17_6DXXrzKzE0JvSA?pid=ImgDet&w=300&h=200&rs=1" },
-    { id: 6, name: "CHICKEN SHAWARMA MINI", price: 50, image: "https://th.bing.com/th/id/R.qHhmqHDbOmqIlqkVP3q5sw?pid=ImgDet&w=300&h=200&rs=1" },
-    { id: 7, name: "VEG SHAWARMA", price: 50, image: "https://th.bing.com/th/id/R.q3nLSZ9M_87jPaZ2dljrAg?pid=ImgDet&w=300&h=200&rs=1" },
-    { id: 8, name: "SPECIAL CHICKEN BURGER", price: 100, image: "https://th.bing.com/th/id/R.dVNKKbgcf1IEJPkKgf6YFA?pid=ImgDet&w=300&h=200&rs=1" },
-    { id: 9, name: "CHICKEN CHEEZ BURGER", price: 80, image: "https://th.bing.com/th/id/R.2Y68AW8WpJTJmqDPNcPtDg?pid=ImgDet&w=300&h=200&rs=1" },
-    { id: 10, name: "VEG BURGER", price: 80, image: "https://th.bing.com/th/id/R._dpIzRlJ6RJbWBGMW8u8WQ?pid=ImgDet&w=300&h=200&rs=1" },
-    { id: 11, name: "CHICKEN SANDWICH", price: 80, image: "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&h=200&fit=crop" },
-    { id: 12, name: "VEG SANDWICH", price: 80, image: "https://th.bing.com/th/id/R.br_ukkRB_2p6OMWAhZjBHg?pid=ImgDet&w=300&h=200&rs=1" }
+  { 
+    id: 1, 
+    name: "SPECIAL CHICKEN PIZZA", 
+    price: 249, 
+    image: "https://th.bing.com/th/id/OIP.YImzfxf1fvcb_oQtPOTirwHaE8?w=318&h=180&c=7&r=0&o=7&pid=1.7&rm=3" 
+  },
+  { 
+    id: 2, 
+    name: "CHICKEN CHEEZ PIZZA", 
+    price: 170, 
+    image: "https://th.bing.com/th/id/R.6LZMqeA6IijbUpCO4qKM1g?pid=ImgDet&rs=1" 
+  },
+  { 
+    id: 3, 
+    name: "VEG PIZZA", 
+    price: 110, 
+    image: "https://th.bing.com/th/id/OIP.e8DKB-liIZTbNTNwfw1m0gHaE8?w=210&h=150&c=6&o=7&pid=1.7&rm=3" 
+  },
+  { 
+    id: 4, 
+    name: "CHICKEN SHAWARMA SPECIAL", 
+    price: 120, 
+    image: "https://th.bing.com/th/id/R.Zd2tFA-GjKmKPV0OAGz_5Q?pid=ImgDet&rs=1" 
+  },
+  { 
+    id: 5, 
+    name: "CHICKEN SHAWARMA REGULAR", 
+    price: 100, 
+    image: "https://th.bing.com/th/id/R.4B-XD17_6DXXrzKzE0JvSA?pid=ImgDet&rs=1" 
+  },
+  { 
+    id: 6, 
+    name: "CHICKEN SHAWARMA MINI", 
+    price: 50, 
+    image: "https://th.bing.com/th/id/R.qHhmqHDbOmqIlqkVP3q5sw?pid=ImgDet&rs=1" 
+  },
+  { 
+    id: 7, 
+    name: "VEG SHAWARMA", 
+    price: 50, 
+    image: "https://th.bing.com/th/id/R.q3nLSZ9M_87jPaZ2dljrAg?pid=ImgDet&rs=1" 
+  },
+  { 
+    id: 8, 
+    name: "SPECIAL CHICKEN BURGER", 
+    price: 100, 
+    image: "https://th.bing.com/th/id/R.dVNKKbgcf1IEJPkKgf6YFA?pid=ImgDet&rs=1" 
+  },
+  { 
+    id: 9, 
+    name: "CHICKEN CHEEZ BURGER", 
+    price: 80, 
+    image: "https://th.bing.com/th/id/R.2Y68AW8WpJTJmqDPNcPtDg?pid=ImgDet&rs=1" 
+  },
+  { 
+    id: 10, 
+    name: "VEG BURGER", 
+    price: 80, 
+    image: "https://th.bing.com/th/id/R._dpIzRlJ6RJbWBGMW8u8WQ?pid=ImgDet&rs=1" 
+  },
+  { 
+    id: 11, 
+    name: "CHICKEN SANDWICH", 
+    price: 80, 
+    image: "https://th.bing.com/th/id/OIP.4kbJ24hOkkedh9mSn1aLGwHaE8?w=288&h=192&c=7&r=0&o=5&pid=1.7" 
+  },
+  { 
+    id: 12, 
+    name: "VEG SANDWICH", 
+    price: 80, 
+    image: "https://th.bing.com/th/id/R.br_ukkRB_2p6OMWAhZjBHg?pid=ImgDet&rs=1" 
+  }
 ];
+
 
         // Cart functionality
         let cart = [];
@@ -1810,5 +1871,6 @@ const menuItems = [
     </script>
 </body>
 </html>
+
 
 
